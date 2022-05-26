@@ -1,30 +1,58 @@
 import React from "react";
 
-class SignIn extends React.Component{
+class SignInPage extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: props.initialText || ``,
+            password: props.initialText || ``
+        }
+    }
+
+
     render(){
+        const {email, password} = this.state;
+
         return(
             <div>
-                <h1>Component: SignIn | ParentComponent: LandingPage</h1>
+                <h1>Component: UserSignUpPage | ParentComponent: n/a</h1>
 
-                {/* :::::::::::::::::::::::::::::::::BEFORE BOOTSTRAP:::::::::::::::::::::::::::::::::::::::: */}
-                <div className="container">Sign In
-                    <form>
-                        <label>Email</label>
-                        <input type="text" name="email" id="email-field" />
+                <div className="input-container">
+                                <h3>Sign In</h3>
+                                    <div className="centered-input">
+          
 
-                        <label>Password</label>
-                        <input type="password" name="password" id="password-field" />
 
-                        <button type="submit">Sign In</button>
-                        
-                    </form>
+                                    <input 
+                                        type="text"
+                                        placeholder="Enter email"
+                                        name="email"
+                                        value={email}
+                                        // onChange={this._handleChange}
+                                    />
+                                    
+                                    <input
+                                        type="password"
+                                        placeholder="Password"
+                                        name="password"
+                                        value={password}
+                                        // onChange={this._handleChange}
+                                    />
 
-                </div>
-                {/* :::::::::::::::::::::::::::::::::AFTER BOOTSTRAP:::::::::::::::::::::::::::::::::::::::: */}
+                                    
+                                    <div className="centered-btn">
+
+                                    <button className="btn" type="submit">
+                                        Sign In
+                                    </button>
+                                    </div>
+
+                                </div>
+                            </div>
 
             </div>
         )
     }
 }
 
-export default SignIn;
+export default SignInPage;
