@@ -37,7 +37,6 @@ const createUser = (req, res) => {
     client.query(insertQuery, (err, result) => {
         if (!err) {
             res.send('Insertion was successful');
-            
         } else {
             console.log(err.message);
             

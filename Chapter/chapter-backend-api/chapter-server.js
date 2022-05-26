@@ -2,12 +2,11 @@
 const res = require('express/lib/response');
 const http = require('http');
 const express = require('express');
-
-// const cors = require('cors');
 const bodyParser = require('body-parser'); //<-replaced cors
-
 // const client = require('./server-to-db');
 const { response } = require('express');
+const bcrypt = require('bcrypt');
+const router = express.Router();
 
 const hostname = `127.0.0.1`;
 const port = 5000;
@@ -66,6 +65,7 @@ app.get('/expanded', (req, res) => {
     res.send('Expanded Story Page (SEE UserDashboardPage.jsx)');
 });
 //---------------------TESTING TO MAKE SURE THE SERVER IS UP AND RUNNING----------------------------
+
 
 
 
