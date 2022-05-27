@@ -3,10 +3,11 @@ const res = require('express/lib/response');
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser'); //<-replaced cors
-// const client = require('./server-to-db');
 const { response } = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
+const client = require('./server-to-chapterdb');
+
 
 const hostname = `127.0.0.1`;
 const port = 5000;
@@ -15,6 +16,7 @@ const app = express();
 const server = http.createServer(app);
 
 //middleware
+
 // app.use(cors());
 // app.use(express.json());
 
@@ -65,9 +67,14 @@ app.get('/expanded', (req, res) => {
     res.send('Expanded Story Page (SEE UserDashboardPage.jsx)');
 });
 //---------------------TESTING TO MAKE SURE THE SERVER IS UP AND RUNNING----------------------------
+//route (sign-in page)
+app.post('/', client.readUser);
+app.post('/signup', client.createUser);
 
-
-
+//for UserDashboardPage.jsx
+app.get('/dashboard/:id', (req, res) => {
+    res.send('User Dashboard Page (SEE UserDashboardPage.jsx)');
+});
 
 
 //route for Landing page (SEE LandingPage.jsx)

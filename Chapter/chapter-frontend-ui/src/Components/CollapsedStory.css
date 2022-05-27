@@ -1,0 +1,20 @@
+.collapsed-story-container{
+    background-color:#be8f3c;
+    width: 595px;
+    height: 700px;
+    border-radius: 15px;
+    margin-left: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-container{
+    background-color: wheat;
+    width: 495px;
+    height: 600px;
+    border-radius: 15px;
+
+
+}

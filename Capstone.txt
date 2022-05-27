@@ -1,0 +1,51 @@
+------------------------------------05/26/22------------------------------------------
+Standup: 
+    1. What I did yesterday: Uploaded file structure, created database, created the server
+    and wired the database to the server.
+    2. What I'm doing today: Connecting all three stacks and creating persistent login sessions
+    3. Blockers: Lack of knowledge on how to enable persistent login sessions
+
+Steps on creating JWT
+
+    1. npm i dotenv
+    2. touch .env
+    3. open .env
+    4. enter your jwtSecret
+    5. touch chapter-jwtGenerator
+    6. import jsonwebtoken module
+    7. require('dotenv').config(); //<-- which allows us to access all of our enviornment tokens
+
+
+    {
+    "first_name":"John",
+    "last_name":"Smith",
+    "gender": "male",
+    "email": "john@chapter.com",
+    "reminder_frequency": 1,
+    "pin_number": 4902,
+    "theme_color": "orange",
+    "password": "john8935"
+
+}
+
+
+
+
+<form>
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+    <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+    </form>
