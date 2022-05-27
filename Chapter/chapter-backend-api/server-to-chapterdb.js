@@ -1,3 +1,5 @@
+const jwtGenerator = require('./chapter-jwtgenerator');
+const bcrypt = require('bcrypt');
 //-----------------------------------Connects Chapter Server to the Chapter DB------------------------------------------------
 
 
@@ -13,8 +15,6 @@
 // const db = pgp(config); //<-- Connects to the database
 
 //:::::::::::::Connection to the Database::::::::::::::::::
-
-
 const {Client} = require('pg');
 const client = new Client({
     host: "localhost",
@@ -27,13 +27,40 @@ client.connect();
 
 //:::::::::::::CRUD Operations::::::::::::::::::
 
+//------------------------------------------------TESTING TO SEE IF SERVER IS CONNECTED TO DB-----------------------------------------------
+const seeTableRows = (req, res) => {
+    // const user = req.body;
+    let printQuery = `SELECT * FROM chapter_users;`;
+
+    client.query(printQuery, (err, result) => {
+        if (!err) {
+            // res.send(`Sucess`)
+            return result;
+            
+        } else {
+            console.error(`Unsuccessful: ${err.message}`);
+            
+        }
+    });
+    client.end;
+}
+
+seeTableRows();
+
+
+
+
+
+
 
 //------------------------------------------------INSERTING a user into a database-----------------------------------------------
 
 const createUser = (req, res) => {
     const user = req.body;
     let insertQuery = `INSERT INTO Chapter_Users (first_name, last_name, gender, email, theme_color, reminder_frequency, pin_number, password)
-                        VALUES ('${user.first_name}', '${user.last_name}', '${user.email}', '${user.password}', '${user.gender}', '${user.theme_color}', '${user.reminder_frequency}', '${user.pin_number}', '${user.password}')`
+                        VALUES ('${user.first_name}','${user.last_name}' ,'${user.gender}', '${user.email}','${user.theme_color}','${user.reminder_frequency}','${user.pin_number}','${user.password}')`
+
+    // Create the user
     client.query(insertQuery, (err, result) => {
         if (!err) {
             res.send('Insertion was successful');
@@ -41,8 +68,8 @@ const createUser = (req, res) => {
             console.log(err.message);
             
         }
-    })
-    client.end;
+    });
+    // client.end;
 }
 
 //------------------------------------------------Authenticating a user--------------------------------------------------------
@@ -71,6 +98,12 @@ const readUser = (req, res) => {
             res.send(`Message: Wrong email / password combination`)
         }
     })
+    client.end;
+}
+
+const userDashboard = (req, res) => {
+    const user = req.body;
+    loadUserAccountQuery = `SELECT * FROM `
 }
 
 module.exports = {

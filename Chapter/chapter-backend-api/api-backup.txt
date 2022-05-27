@@ -1,0 +1,215 @@
+-------------------------------------05/26/22@10:36am----------------------------------------------------
+
+//:::::::::::::::::::::::::::::::::chapter-server.js::::::::::::::::::::::::::::::::::::::::::::::::::
+
+//---------------------------------------Server for the Chapter Application-------------------------------------------------
+const res = require('express/lib/response');
+const http = require('http');
+const express = require('express');
+const bodyParser = require('body-parser'); //<-replaced cors
+const { response } = require('express');
+const bcrypt = require('bcrypt');
+const router = express.Router();
+const client = require('./server-to-chapterdb');
+
+
+const hostname = `127.0.0.1`;
+const port = 5000;
+
+const app = express();
+const server = http.createServer(app);
+
+//middleware
+
+// app.use(cors());
+// app.use(express.json());
+
+app.use(bodyParser.json());
+app.use(
+    bodyParser.urlencoded({
+        extended: true
+    })
+);
+
+app.use(function(req, res, next) { //<-- This will help with bypassing cors
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
+
+//---------------------TESTING TO MAKE SURE THE SERVER IS UP AND RUNNING----------------------------
+
+//for LandingPage.jsx
+app.get('/', (req, res) => {
+    res.send('Landing Page (SEE LandingPage.jsx)');
+});
+
+//for AboutMe.jsx
+app.get('/about-me', (req, res) => {
+    res.send('About Me Page (SEE AboutMe.jsx)');
+});
+
+//for UserSignUpPage.jsx
+app.get('/register', (req, res) => {
+    res.send('Registration Page (SEE UserSignUpPage.jsx)');
+});
+
+//for UserDashboardPage.jsx
+app.get('/dashboard', (req, res) => {
+    res.send('User Dashboard Page (SEE UserDashboardPage.jsx)');
+});
+
+//for AccountManagementPage.jsx
+app.get('/account', (req, res) => {
+    res.send('Change Account Page (SEE AccountManagementPage.jsx)');
+});
+
+//for ExpandedStoryPage.jsx
+app.get('/expanded', (req, res) => {
+    res.send('Expanded Story Page (SEE UserDashboardPage.jsx)');
+});
+//---------------------TESTING TO MAKE SURE THE SERVER IS UP AND RUNNING----------------------------
+//route (sign-in page)
+app.post('/', client.readUser);
+app.post('/signup', client.createUser);
+
+//route for Landing page (SEE LandingPage.jsx)
+// app.post('/', client.readUser);
+//sign-up page route
+// app.post('/signup', client.createUser);
+
+// app.get('/homepage', (req, res) => {
+//     res.send('This is the Homepage');
+// });
+
+//content page (of a given show clicked on by the user)
+// app.get('/content', (req, res) => {
+//     res.send('This is the Content');
+// });
+
+//favorites page (elective, save for after project has been completed)
+
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+    
+})
+
+
+
+//:::::::::::::::::::::::::::::::::server-to-chapterdb.js::::::::::::::::::::::::::::::::::::::::::::::::::
+
+//-----------------------------------Connects Chapter Server to the Chapter DB------------------------------------------------
+
+
+// const pgp = require('pg-promise')();
+
+// const config = {
+//     host: 'localhost', // localhost the same as 127.0.0.1
+//     port: 5432,
+//     database: 'miniNetflixdb',
+//     user: 'corcoding'
+// };
+
+// const db = pgp(config); //<-- Connects to the database
+
+//:::::::::::::Connection to the Database::::::::::::::::::
+const {Client} = require('pg');
+const client = new Client({
+    host: "localhost",
+    port: 5432,
+    database: "chapterdb",
+    user: 'corcoding'
+});
+
+client.connect();
+
+//:::::::::::::CRUD Operations::::::::::::::::::
+
+//------------------------------------------------TESTING TO SEE IF SERVER IS CONNECTED TO DB-----------------------------------------------
+const seeTableRows = (req, res) => {
+    // const user = req.body;
+    let printQuery = `SELECT * FROM chapter_users;`;
+
+    client.query(printQuery, (err, result) => {
+        if (!err) {
+            // res.send(`Sucess`)
+            return result;
+            
+        } else {
+            console.error(`Unsuccessful: ${err.message}`);
+            
+        }
+    });
+    client.end;
+}
+
+seeTableRows();
+
+
+
+
+
+
+
+//------------------------------------------------INSERTING a user into a database-----------------------------------------------
+
+const createUser = (req, res) => {
+    const user = req.body;
+    let insertQuery = `INSERT INTO Chapter_Users (first_name, last_name, gender, email, theme_color, reminder_frequency, pin_number, password)
+                        VALUES ('${user.first_name}','${user.last_name}' ,'${user.gender}', '${user.email}','${user.theme_color}','${user.reminder_frequency}','${user.pin_number}','${user.password}')`
+    client.query(insertQuery, (err, result) => {
+        if (!err) {
+            res.send('Insertion was successful');
+        } else {
+            console.log(err.message);
+            
+        }
+    })
+    client.end;
+}
+
+//------------------------------------------------Authenticating a user--------------------------------------------------------
+//1. take in the users input
+//2. select from the database
+//4. if not, send them to the user doesn't exist page
+
+const readUser = (req, res) => {
+    const user = req.body;
+    console.log('USER:', user);
+    let readQuery = `SELECT FROM chapter_users WHERE 
+                        (email ilike '${user.email}' AND password ilike '${user.password}')`
+    client.query(readQuery, (err, result) => {
+        if (err) {
+            res.send(`Something is wrong: ${err}`)   
+        }
+
+        if(result.rowCount > 0){
+            console.log('RESULT:', result.rowCount)
+            // res.send(result);
+            res.send(`
+            Login was Sucessful, Result: ${result}
+            `);
+            //this is where the user would get directed to there user page
+        }else{
+            res.send(`Message: Wrong email / password combination`)
+        }
+    })
+    client.end;
+}
+
+module.exports = {
+    createUser,
+    readUser
+};
+
+
+
+
+
+
+
+
+
+
