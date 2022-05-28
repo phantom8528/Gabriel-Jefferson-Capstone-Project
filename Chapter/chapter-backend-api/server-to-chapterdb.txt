@@ -7,7 +7,7 @@
 // const config = {
 //     host: 'localhost', // localhost the same as 127.0.0.1
 //     port: 5432,
-//     database: 'chapterdb',
+//     database: 'miniNetflixdb',
 //     user: 'corcoding'
 // };
 
@@ -27,12 +27,25 @@ client.connect();
 //:::::::::::::CRUD Operations::::::::::::::::::
 
 //------------------------------------------------TESTING TO SEE IF SERVER IS CONNECTED TO DB-----------------------------------------------
-// function printUsers() {
+// const seeTableRows = (req, res) => {
 //     const user = req.body;
-//     client.query = `SELECT * FROM chapter_users`;
-//     console.log(user);
+//     let printQuery = `SELECT * FROM chapter_users;`;
+
+//     client.query(printQuery, (err, result) => {
+//         if (!err) {
+//             // res.send(`Sucess`)
+//             return result;
+            
+//         } else {
+//             console.error(`Unsuccessful: ${err.message}`);
+            
+//         }
+//     });
+//     client.end;
 // }
-// printUsers()
+
+// seeTableRows();
+
 //------------------------------------------------INSERTING a user into a database-----------------------------------------------
 
 const createUser = (req, res) => {

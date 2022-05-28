@@ -6,6 +6,15 @@ import LandingPage from "../LandingPage";
 import './LandingPageNav.css';
 
 
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link
+  
+  } from 'react-router-dom';
+
+
 class LandingPageNav extends React.Component{
     render(){
         return(
@@ -25,7 +34,7 @@ class LandingPageNav extends React.Component{
                                 <a id="chapter-nav-link"  className="nav-link" href="#"> About Me | </a>
                             </li>
                             <li className="nav-item">
-                                <a id="chapter-nav-link" className="nav-link" href="#">Manage Account |</a>
+                                <a id="chapter-nav-link" className="nav-link" href="#">Sign Up |</a>
                             </li>
                             <li className="nav-item">
                                 <a id="chapter-nav-link"  className="nav-link" href="#">GitHub |</a>

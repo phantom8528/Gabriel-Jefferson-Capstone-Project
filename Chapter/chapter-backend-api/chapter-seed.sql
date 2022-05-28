@@ -13,8 +13,6 @@ CREATE TABLE IF NOT EXISTS Chapter_Users (
     UNIQUE (password)
 );
 
-
-
 CREATE TABLE IF NOT EXISTS Chapter_Posts (
     chapter_id SERIAL PRIMARY KEY,
     on_body VARCHAR(100) NOT NULL,
@@ -27,7 +25,8 @@ CREATE TABLE IF NOT EXISTS Chapter_Posts (
 -- A USER CAN Chapter_User CAN HAVE MANY Chapter_Posts
 
 
--- ALTER TABLE Chapter_Posts ADD users_id INT NOT NULL;
--- ALTER TABLE Chapter_Posts ADD CONSTRAINT fk_users_id FOREIGN KEY (users_id) REFERENCES Chapter_Users(users_id);
+ALTER TABLE Chapter_Posts ADD users_id INT NOT NULL;
+ALTER TABLE Chapter_Posts ADD CONSTRAINT fk_users_id 
+    FOREIGN KEY (users_id) REFERENCES Chapter_Users(users_id);
 
 

@@ -101,7 +101,7 @@ class Input extends React.Component{
 
                         {/* FOURTH INPUT */}
                         <div className="input-pin-number-container">
-                            <input type="text" placeholder="Pin #" />
+                            <input type="text" placeholder="4-Digit Pin #" />
                         </div>
 
                         {/* BUTTONS */}
