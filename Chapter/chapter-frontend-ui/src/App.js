@@ -18,8 +18,8 @@ import {
 function App() {
   return (
     <div className="App">
-      <LandingPage />
-      {/* <UserSignUpPage /> */}
+      {/* <LandingPage /> */}
+      <UserSignUpPage />
       {/* <AccountManagementPage /> */}
 
 
