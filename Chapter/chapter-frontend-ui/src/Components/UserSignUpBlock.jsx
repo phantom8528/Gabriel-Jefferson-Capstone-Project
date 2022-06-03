@@ -5,8 +5,10 @@ import './UserSignUpBlock.css';
 import Footer from "./LandingPageComponents/Footer";
 // import { response } from "express";
 // import e from "express";
+import { useEffect } from 'react';
 
 class UserSignUpPage extends React.Component{
+// const UserSignUpPage = () => {
 
     constructor(props){
         super(props);
@@ -19,7 +21,7 @@ class UserSignUpPage extends React.Component{
             reminder_frequncy: props.initialInt || ``,
             pin_number: props.initialText || ``,
             password: props.initialText || ``
-        }
+        };
     }
 
     _handleChange = (event) => {
@@ -36,11 +38,21 @@ class UserSignUpPage extends React.Component{
             .then(response => {
                 console.log(response)
             })
+        
     }
 
 
     render(){
         const {first_name, last_name, gender, email, theme_color, reminder_frequency, pin_number,  password} = this.state;
+
+        // using useEffect to store login info in localStorage
+        // useEffect(() => {
+        //     localStorage.setItem("first_name", JSON.stringify(first_name));
+        //     localStorage.setItem("last_name", JSON.stringify(last_name));
+        //     localStorage.setItem("email", JSON.stringify(email));
+        //     localStorage.setItem("password", JSON.stringify(password));
+        // }, [first_name, last_name, email, password]);
+
         return(
             <div>
                 <LandingPageNav />
@@ -74,6 +86,7 @@ class UserSignUpPage extends React.Component{
         )
     }
 }
+
 
 export default UserSignUpPage;
 

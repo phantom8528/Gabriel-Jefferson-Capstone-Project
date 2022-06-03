@@ -5,7 +5,6 @@ import LandingPage from "../LandingPage";
 // import './LandingPageComponents/LandingPageNav.css';
 import './LandingPageNav.css';
 
-
 import {
     BrowserRouter as Router,
     Routes,
@@ -13,7 +12,6 @@ import {
     Link
   
   } from 'react-router-dom';
-
 
 class LandingPageNav extends React.Component{
     render(){
