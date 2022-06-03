@@ -1,0 +1,287 @@
+::::::::::::::::::::::::::::::::::::::::App.js::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+import './App.css';
+import React from 'react' 
+import { useState, useEffect } from 'react';
+
+import DashboardTest from './DashboardTest';
+import LoginTest from './LoginTest';
+import RegisterTest from './RegisterTest';
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Redirect,
+  Navigate
+
+} from 'react-router-dom';
+
+
+function App() {
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false); //<-- Starting off, the user is unauthenticated
+
+  const setAuth = (boolean) => {
+    setIsAuthenticated(boolean);
+
+  }
+
+  // if(!isAuthenticated){ //<-- If the user hasn't been authenticated yet
+  //   return <LoginTest setAuth={setAuth}/> || <RegisterTest setAuth={setAuth} />
+  // }else{
+  //   return <DashboardTest setAuth={setAuth} />
+  // }
+
+
+  return (
+
+    <div className="App">
+      <Router>
+        <Routes>
+            {/* <Route path='/login' element={<LoginTest />}></Route>
+            <Route path='/register' element={<RegisterTest />}></Route>
+            <Route path='/dashboard' element={<DashboardTest />}></Route> */}
+
+            <Route exact path="/login" element={ !isAuthenticated ? <LoginTest setAuth={setAuth} /> : <Navigate to="/dashboard" />}/>
+            <Route exact path="/register" element={ !isAuthenticated ? <RegisterTest setAuth={setAuth} /> : <Navigate to="/login" />}/>
+            <Route exact path="/dashboard" element={ isAuthenticated ? <DashboardTest setAuth={setAuth} /> : <Navigate to="/login" />}/>
+
+        </Routes>  
+      </Router>
+
+
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::DashboardTest.jsx::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+import res from "express/lib/response";
+import React from "react";
+import { useState, useEffect } from "react";
+
+const DashboardTest = ({setAuth}) => {
+
+    const [name, setName] = useState();
+
+    const _getName = async () =>{
+        try {
+            const response = await fetch('http://localhost:8080/dashboard', {
+                method: "GET",
+                headers: {token: localStorage.token}
+            });
+
+            const parseResponse = await response.json();
+            console.log(parseResponse);
+            
+        } catch (err) {
+            console.error(err.message);
+            
+        }
+    }
+ 
+    useEffect(() => {
+        _getName();
+    });
+
+
+    return(
+        <div>
+            <h1>This The TEST Dashboard</h1>
+            {/* <button onClick={() => setAuth(false)} type="submit">Logout</button> */}
+        </div>
+    )
+}
+
+export default DashboardTest;
+
+
+::::::::::::::::::::::::::::::::::::::::LoginTest.jsx::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+import React from "react";
+import { useState, useEffect } from "react";
+import './LoginTest.css';
+
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link,
+    Redirect,
+    Navigate
+  
+  } from 'react-router-dom';
+
+import RegisterTest from "./RegisterTest";
+
+const LoginTest =  ({setAuth}) => {
+    //Keep track of inputs with the useState
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: ""
+    });
+
+    //destructure the inputs from the useState to be used later on
+    const {email, password} = inputs;
+
+    //Track the change in inputs that are entered into the fields
+    const onChange = (event) => {
+        setInputs({
+            ...inputs,
+            [event.target.name]: event.target.value
+        });
+    }
+
+    //Initiate connection to server when the button is clicked
+    const _onSubmit = async (event) => {
+        event.preventDefault(); //<-- Prevents the page from being reset
+
+        try {
+            const body = {email, password}
+            const response = await fetch ("http://localhost:8080/login", {
+                method: "POST",
+                headers: {"Content-Type" : "application/json"},
+                body: JSON.stringify(body)
+            })
+
+            const parseResponse = await response.json();
+            console.log(parseResponse);
+
+            /**
+             * This next part is where we use localStorage to 
+             * store our information so that it can be accessed by the 
+             * dashboard component
+             */
+
+            localStorage.setItem("token", parseResponse.token)
+
+            // Then we get redirected to our dashboard page
+            setAuth(true);
+
+            
+        } catch (err) {
+            console.error(err.message);
+            
+        }
+
+
+    }
+
+
+    return(
+        <div>
+            <h1>This The TEST Login Page</h1>
+
+            <form className="login-container" onSubmit={_onSubmit}>
+                <input type="email" name="email" id="login-email" placeholder="Your Email Address" value={email} onChange={e => onChange(e)}/>
+                <input type="password" name="password" id="login-password" placeholder="Your Password" value={password} onChange={e => onChange(e)}/>
+
+                {/* <button onClick={() => setAuth(true)} type="submit" >Authenticate</button> */}
+                <button type="submit" class="btn btn-primary">Login</button>
+
+
+            </form>
+            <Link to="/register">Not a user?  Sign Up Here</Link>
+
+
+
+        </div>
+    )
+}
+
+export default LoginTest;
+
+::::::::::::::::::::::::::::::::::::::::RegisterTest.jsx::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+import React from "react";
+import { useState } from "react";
+import './RegisterTest.css';
+
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link,
+    Redirect,
+    Navigate
+  
+  } from 'react-router-dom';
+
+
+
+const RegisterTest =  ({setAuth}) => {
+
+    const [inputs, setInputs] = useState({
+        name: "",
+        email: "",
+        password: ""
+ 
+    })
+
+    const {name, email, password} = inputs
+
+    const onChange = (event) => {
+        setInputs({...inputs, [event.target.name]: event.target.value});
+    }
+
+    const _onSubmit = async (event) => {
+        event.preventDefault(); //<-- Prevents the page from being reset
+
+        try {
+            const body = {name, email, password}
+            const response = await fetch ("http://localhost:8080/signup", {
+                method: "POST",
+                headers: {"Content-Type" : "application/json"},
+                body: JSON.stringify(body)
+            })
+
+            const parseResponse = await response.json();
+            // console.log(parseResponse);
+
+            /**
+             * This next part is where we use localStorage to 
+             * store our information so that it can be accessed by the 
+             * dashboard component
+             */
+
+            localStorage.setItem("token", parseResponse.token)
+
+            // Then we get redirected to our dashboard page
+
+            setAuth(true);
+
+            
+        } catch (err) {
+            console.error(err.message);
+            
+        }
+
+
+    }
+
+    return(
+        <div>
+            <h1>This The TEST Registration Page</h1>
+            <form className="register-container" onSubmit={_onSubmit}>
+                <input type="text" name="name" placeholder="Please Enter First and Last Name" className="register-input" value={name} onChange={e => onChange(e)}/>
+                <input type="email" name="email" placeholder="Enter Email" className="register-input" value={email} onChange={e => onChange(e)}/>
+                <input type="password" name="password" placeholder="Enter Password" className="register-input" value={password} onChange={e => onChange(e)}/>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <Link to="/login">Already a user?   Login Here</Link>
+
+
+
+        </div>
+    )
+}
+
+export default RegisterTest;
+

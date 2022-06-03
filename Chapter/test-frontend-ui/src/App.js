@@ -2,9 +2,9 @@ import './App.css';
 import React from 'react' 
 import { useState, useEffect } from 'react';
 
-import DashboardTest from './DashboardTest';
-import LoginTest from './LoginTest';
-import RegisterTest from './RegisterTest';
+import RegisterTest from './Components/RegisterTest';
+import LoginTest from './Components/LoginTest';
+import DashboardTest from './Components/DashboardTest';
 
 import {
   BrowserRouter as Router,
@@ -26,6 +26,31 @@ function App() {
 
   }
 
+  const isAuth = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/is-vertify', {
+        method: "GET",
+        headers: {token: localStorage.token}
+      });
+      
+      const parseResponse = await response.json();
+      // console.log(parseResponse);
+      parseResponse === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+      
+
+
+      
+    } catch (err) {
+      console.error(err.message);
+      
+    }
+
+  }
+
+  useEffect(() => {
+    isAuth();
+  });
+
   // if(!isAuthenticated){ //<-- If the user hasn't been authenticated yet
   //   return <LoginTest setAuth={setAuth}/> || <RegisterTest setAuth={setAuth} />
   // }else{
@@ -36,11 +61,10 @@ function App() {
   return (
 
     <div className="App">
+      {/* <h1>Application Page</h1> */}
+
       <Router>
         <Routes>
-            {/* <Route path='/login' element={<LoginTest />}></Route>
-            <Route path='/register' element={<RegisterTest />}></Route>
-            <Route path='/dashboard' element={<DashboardTest />}></Route> */}
 
             <Route exact path="/login" element={ !isAuthenticated ? <LoginTest setAuth={setAuth} /> : <Navigate to="/dashboard" />}/>
             <Route exact path="/register" element={ !isAuthenticated ? <RegisterTest setAuth={setAuth} /> : <Navigate to="/login" />}/>
@@ -48,8 +72,7 @@ function App() {
 
         </Routes>  
       </Router>
-
-
+      
     </div>
   );
 }
