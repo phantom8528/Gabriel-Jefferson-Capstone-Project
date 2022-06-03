@@ -23,7 +23,7 @@ const client = new Client({
 
 });
 
-client.connect();
+// client.connect();
 
 //::::::::::::::::::::::ROUTES::::::::::::::::::::::::::::::::
 
@@ -112,16 +112,10 @@ router.get('/is-vertify', authorize, async (req, res) => {
         
     }
 });
-//--------------Accessing private information from DB-----------------------------------------
 
-
-
-
-
-
+//--------------Manages the user's information once logged into their dashboard---------------------
 
 
 
 //::::::::::::::::::::EXPORT THE ROUTER:::::::::::::::::::::::::::
 module.exports = router;
-// module.exports = client;

@@ -1,5 +1,5 @@
 /**
- * PURPOSE OF FILE: Making sure that the user has a valid jwt token
+ * PURPOSE OF FILE: Middleware that makes sure that the user has a valid jwt token.
  * EXPORT TO: test-routes-auth.js
  ---------------------------------------------------------------------
  */

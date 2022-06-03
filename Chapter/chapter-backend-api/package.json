@@ -4,13 +4,13 @@
   "description": "",
   "main": "server-to-db.js",
   "scripts": {
-    "dev": "nodemon test-server.js",
+    "dev": "nodemon chapter-server.js",
     "db.create": "createdb chapterdb",
     "db.change": "psql -f chapter-seed.sql chapterdb",
     "db.destroy": "dropdb chapterdb",
     "db.insert": "psql -f chapter-insert.sql chapterdb",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node test-server.js"
+    "start": "node chapter-server.js"
   },
   "keywords": [],
   "author": "",

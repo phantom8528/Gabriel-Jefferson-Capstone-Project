@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
       return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail);
     }
     //2. Makes sure that that the email field isn't empty
-    if (req.path === "/signup") {
+    if (req.path === "/register") {
       console.log(!email.length);
       if (![email, name, password].every(Boolean)) { //<-- makes sure the email field isn't empty
         // return res.json("Missing Credentials");
