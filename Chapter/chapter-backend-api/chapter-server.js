@@ -7,7 +7,16 @@ const { response } = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 const client = require('./server-to-chapterdb');
+const { clearLine } = require('readline');
+const session = require('express-session')
+const flash = require('express-flash');
+require('dotenv').config();
+const passport = require('passport');
 
+const initializePassport = require('./passportConfig');
+
+
+secret = process.env.SECRET;
 
 const hostname = `127.0.0.1`;
 const port = 5000;
@@ -15,7 +24,7 @@ const port = 5000;
 const app = express();
 const server = http.createServer(app);
 
-//middleware
+//--------------------------------------MIDDLEWARE-------------------------------------------
 
 // app.use(cors());
 // app.use(express.json());
@@ -34,6 +43,18 @@ app.use(function(req, res, next) { //<-- This will help with bypassing cors
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
+
+// app.use(session({
+//     secret: secret,
+//     resave: false, 
+//     saveUninitialized: false //<-- We don't want to save session details
+// }));
+
+// app.use(flash());
+
+// app.use(passport.initialize);
+// app.use(passport.session());
+
 
 //---------------------TESTING TO MAKE SURE THE SERVER IS UP AND RUNNING----------------------------
 
@@ -66,20 +87,19 @@ app.get('/account', (req, res) => {
 app.get('/expanded', (req, res) => {
     res.send('Expanded Story Page (SEE UserDashboardPage.jsx)');
 });
+
+app.get('/get-users', client.getUsers);
 //---------------------TESTING TO MAKE SURE THE SERVER IS UP AND RUNNING----------------------------
 //route (sign-in page)
-app.post('/', client.readUser);
-app.post('/signup', client.createUser);
 
-//for UserDashboardPage.jsx
-app.get('/dashboard/:id', (req, res) => {
-    res.send('User Dashboard Page (SEE UserDashboardPage.jsx)');
-});
+app.use('/', client.readUser); //<-- Logging in to system
+app.post('/signup', client.createUser); //<-- Signing up a user 
 
-
-
-
-
+// app.post('/', passport.authenticate('local', {
+//     successRedirect: '/users/dashboard',
+//     failureRedirect: '/',
+//     failureFlash: true
+// }))
 
 //route for Landing page (SEE LandingPage.jsx)
 // app.post('/', client.readUser);
@@ -98,9 +118,7 @@ app.get('/dashboard/:id', (req, res) => {
 //favorites page (elective, save for after project has been completed)
 
 server.listen(port, hostname, () => {
+    console.log('Official Server for Chapter.io');
     console.log(`Server running at http://${hostname}:${port}/`);
     
 })
-
-
-

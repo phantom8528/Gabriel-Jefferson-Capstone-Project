@@ -22,3 +22,39 @@
     background-color: #3e94db;
 
 }
+
+/* -------------------------SIGN-UP BLOCK--------------------------------- */
+
+.sign-in-container{
+    background-color: #3e94db;
+    width: 595px;
+    height: 600px;
+    border-radius: 15px;
+    margin-left: 80px;
+    margin-top: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-in-block{
+    width: 500px;
+}
+
+#sign-in-email{
+    margin-bottom: 10px;
+}
+
+#sign-in-button{
+    margin-top: 10px;
+    margin-left: 80px;
+
+}
+
+#sign-in-button-color{
+    background-color: #ffe45f;
+    ;
+}
+
+
