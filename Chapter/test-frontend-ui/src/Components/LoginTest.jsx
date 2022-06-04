@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import './LoginTest.css';
 
 import {
@@ -45,7 +45,7 @@ const LoginTest =  ({setAuth}) => {
             })
 
             const parseResponse = await response.json();
-            console.log(parseResponse);
+            // console.log(parseResponse);
 
             /**
              * This next part is where we use localStorage to 
@@ -64,9 +64,7 @@ const LoginTest =  ({setAuth}) => {
             
         }
 
-
     }
-
 
     return(
         <div>

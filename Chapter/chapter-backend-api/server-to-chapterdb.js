@@ -17,7 +17,7 @@ const validateEmail = require('./chapter-middle-validateEmail');
 //const tokenAuth --> from chapter-middle-token-auth.js
 const tokenAuth = require('./chapter-middle-token-auth');
 
-//const generateToken --> from chapter-util-tokeGen.js
+//const jwtGenerator --> from chapter-util-tokeGen.js
 const jwtGenerator = require('./chapter-util-tokenGen');
 
 //:::::::::::::Connection to the Database::::::::::::::::::
@@ -189,9 +189,8 @@ router.get('/is-vertify', tokenAuth, async (req, res) => {
 });
 
 //--------------Manages the user's information once logged into their dashboard---------------------
-router.get('/dashboard', tokenAuth, async (req, res) => {
+router.get('/', tokenAuth, async (req, res) => {
     try {
-        
         
         //after being authorized, the user has the payload info
         // res.json(req.user); //<-- Returns the id assciated with the logged in user
@@ -202,6 +201,7 @@ router.get('/dashboard', tokenAuth, async (req, res) => {
 
         
     } catch (err) {
+        console.log("---Marker Dashboard---");
         console.error(err.message);
         res.status(500).send("Server Error");
         

@@ -1,5 +1,4 @@
 import React from "react";
-
 // import SignIn from "./LandingPageComponents/SignIn";
 import LandingPageNav from "./LandingPageComponents/LandingPageNav";
 import Input from "./Input";
@@ -16,48 +15,70 @@ import './LandingPage.css'
 // import ChapterToken from './Components/ChapterToken';
 
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // import axios from 'react'
 
 import {
     BrowserRouter as Router,
     Routes,
     Route,
-    Link
+    Link,
+    Navigate
   
   } from 'react-router-dom';
 
-  //Connection to The Backend Server
-  async function loginUser(credentials) {
-    return fetch('http://localhost:5000/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
-      .then(data => data.json())
-   }
+const LandingPage = ({setAuth}) => {
 
-function LandingPage({setToken}){
+    // const [email, setEmail] = useState();
+    // const [password, setPassword] = useState();
 
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    //1. Keep track of user inputs using state control
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: ""
+    });
 
-    const _handleSubmit = async e => {
-        e.preventDefault();
-        const token = await loginUser({
-          email,
-          password
+    //2. destructure the inputs from the useState
+    const {email, password} = inputs;
+
+    //3. Track the changes of the inputs that are inputted into the fields
+    const onChange = (event) => {
+        setInputs({
+            ...inputs,
+            [event.target.name]: event.target.value
         });
-        setToken(token);
+
+    }
+
+    //4. Submission handler
+    const _onSubmit =  async (event) => {
+        event.preventDefault();
+
+        try {
+            const body = {email, password};
+            const response = await fetch('http://127.0.0.1:5000/login', {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(body)
+            });
+
+            const parseResponse = await response.json();
+            // console.log(parseResponse);
+
+            localStorage.setItem("token", parseResponse.token)
+
+            setAuth(true);
+            
+        } catch (err) {
+            console.error(err.message);
+            
+        }
     }
 
     return(
         <div className="landing-page-container">
             {/* <h1>Component: LandingPage | ParentComponent: App.js</h1> */}
             <LandingPageNav />
-
             <div className="row-1">
                 <div className="col-6">
                     {/* <h1>This is Where Users Will Sign In</h1> */}
@@ -65,17 +86,17 @@ function LandingPage({setToken}){
                         <div className="sign-in-block">
                         <h1 id="sign-in-label">Sign-In Here</h1>
                         {/* Bootstrap Version of Sign-In Component Below */}
-                        <form onSubmit={_handleSubmit}>
+                        <form onSubmit={_onSubmit}>
                         <div className="form-group row" id="sign-in-email">
                             {/* <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label> */}
                             <div className="col-sm-10">
-                                <input type="email" className="form-control" id="inputEmail3" placeholder="Email" onChange={e => setEmail(e.target.value)}/>
+                                <input type="email" name="email" className="form-control" placeholder="Email" value={email} onChange={e => onChange(e)}/>
                             </div>
                         </div>
                         <div className="form-group row" id="sign-in-password">
                             {/* <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label> */}
                                 <div className="col-sm-10">
-                                    <input type="password" className="form-control" id="inputPassword3" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
+                                    <input type="password" name="password" className="form-control" placeholder="Password" value={password} onChange={e => onChange(e)}/>
                                 </div>
                         </div>
                             <div className="form-group row" id="sign-in-button">
@@ -84,7 +105,7 @@ function LandingPage({setToken}){
                                 </div>
                             </div>
                         </form>
-
+                        <Link to="/register">Not a user?  Sign Up Here</Link>
                         </div>
 
                     </div>
@@ -146,9 +167,9 @@ function LandingPage({setToken}){
     )
 }
 
-LandingPage.propTypes = {
-    setToken: PropTypes.func.isRequired
-};
+// LandingPage.propTypes = {
+//     setToken: PropTypes.func.isRequired
+// };
 
 
 export default LandingPage;

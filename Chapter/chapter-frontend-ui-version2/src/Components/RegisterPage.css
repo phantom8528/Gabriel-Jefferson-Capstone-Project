@@ -1,0 +1,58 @@
+/* 
+.register-container
+
+.row-1
+
+.col-10
+
+.register-form
+
+---The form will go on this level---
+
+*/
+
+.register-container{
+    border: black 5px solid;
+    width: 100;
+}
+
+#register-row{
+    border: red 5px solid;
+    width: 100;
+    height: 600px;
+
+}
+
+#register-col{
+    border: orange 5px solid;
+    width: 100;
+    height: 600px;
+
+}
+
+.register-form{
+    border: purple 7px solid;
+    width: 100;
+    height: 600px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#register-name,
+#register-email, 
+#register-password{
+    width: 641px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#register-button{
+    margin-left: 10px;
+}
+
+
+

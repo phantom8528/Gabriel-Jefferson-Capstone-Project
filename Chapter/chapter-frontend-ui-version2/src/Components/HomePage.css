@@ -1,0 +1,88 @@
+/* 
+.homepage-container
+-- .row-1
+col-6, col-6
+-- .row-2
+col-10
+-- .row-3
+col-10
+*/
+
+/* HomePage Container */
+.homepage-container{
+    border: black 5px solid;
+    width: 100;
+    height: fit-content;
+}
+
+.row-1,
+.row-2,
+.row-3{
+    border: red 5px solid;
+    width: 100;
+    height: fit-content;
+
+}
+
+/* Row 1: SignUp Block LEFT | Introduction Bannner RIGHT */
+
+.row-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-6{
+    border: green 5px solid;
+    height: 600px;
+}
+
+#homepage-login{
+    border: blue 5px solid;
+    border-radius: 15px;
+    height: 494px;
+    width: 100;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#login-email,
+#login-password{
+    width: 641px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+/* Row 2: About Product */
+
+.row-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Row 2: About Developer */
+
+.row-3{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.col-10{
+    border: green 5px solid;
+    height: 600px;
+
+}
+
+
