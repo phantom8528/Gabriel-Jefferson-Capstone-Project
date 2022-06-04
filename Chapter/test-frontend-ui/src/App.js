@@ -17,6 +17,7 @@ import {
 } from 'react-router-dom';
 
 
+
 function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false); //<-- Starting off, the user is unauthenticated
@@ -36,9 +37,7 @@ function App() {
       const parseResponse = await response.json();
       // console.log(parseResponse);
       parseResponse === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
-      
-
-
+  
       
     } catch (err) {
       console.error(err.message);
@@ -50,13 +49,6 @@ function App() {
   useEffect(() => {
     isAuth();
   });
-
-  // if(!isAuthenticated){ //<-- If the user hasn't been authenticated yet
-  //   return <LoginTest setAuth={setAuth}/> || <RegisterTest setAuth={setAuth} />
-  // }else{
-  //   return <DashboardTest setAuth={setAuth} />
-  // }
-
 
   return (
 

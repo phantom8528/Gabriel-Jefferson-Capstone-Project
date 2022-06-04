@@ -1,13 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const DashboardTest = ({setAuth}) => {
+const DashboardPage = ({setAuth}) => {
 
     const [name, setName] = useState();
 
-    const _getName = async () =>{
+    const _getName = async () => {
         try {
-            const response = await fetch('http://localhost:8080/dashboard', {
+            const response = await fetch('http://localhost:5000/dashboard', {
                 method: "GET",
                 headers: {token: localStorage.token}
             });
@@ -15,35 +15,37 @@ const DashboardTest = ({setAuth}) => {
             const parseResponse = await response.json();
             console.log(parseResponse);
             setName(parseResponse.user_name);
+            console.log("Testing 123");
 
             
-
-
         } catch (err) {
             console.error(err.message);
             
         }
     }
 
+    
     const _logOut = (event) => {
         event.preventDefault();
         localStorage.removeItem("token");
         setAuth(false);
     }
 
-  
-    useEffect(() => {_getName();}, []);
+    useEffect(() => {
+        _getName();
+    }, []);
+
 
 
     return(
         <div>
-            <h1>This The TEST Dashboard</h1>
+            <h1>Dashboard / Profile Page</h1>
+            <h2>Welcome {name}</h2>
             <br />
-            <h1>Welcome {name} </h1>
+            <br />
             <button className="btn btn-primary btn-block" type="submit" onClick={e => _logOut(e)}>Logout</button>
-            {/* <button onClick={() => setAuth(false)} type="submit">Logout</button> */}
         </div>
     )
 }
 
-export default DashboardTest;
+export default DashboardPage;

@@ -73,7 +73,7 @@ const RegisterTest =  ({setAuth}) => {
                 <input type="password" name="password" placeholder="Enter Password" className="register-input" value={password} onChange={e => onChange(e)}/>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <Link to="/login">Already a user?   Login Here</Link>
+            <Link to="/login">Already a user? Login Here</Link>
 
 
 
