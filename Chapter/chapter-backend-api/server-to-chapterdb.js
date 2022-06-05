@@ -197,8 +197,6 @@ router.get('/', tokenAuth, async (req, res) => {
         // const user = await client.query(`SELECT * FROM users WHERE user_id = '${req.user}'`); //<-- This returns all the user's information, NOT GOOD
         const user = await client.query(`SELECT user_name FROM users WHERE user_id = '${req.user}'`); //<-- This returns all the user's information, NOT GOOD
         res.json(user.rows[0]);
-
-
         
     } catch (err) {
         console.log("---Marker Dashboard---");

@@ -1,0 +1,38 @@
+/* Container Level 1 */
+.dashboard-container{
+    border: black 5px solid;
+    width: 100;
+    height: fit-content;
+}
+
+#dashboard-input-row,
+#dashboard-output-row{
+    border: red solid 5px;
+    width: 100;
+    height: 600px;
+
+}
+#dashboard-welcome-row{
+    border: red solid 5px;
+    width: 100;
+    height: 250px;
+
+}
+
+#dashboard-welcome-col{
+    width: 100;
+    height: 194px;
+}
+
+#dashboard-instructions-col{
+    border: green 5px solid;
+    /* width: 100px; */
+    height: 240px;
+    margin-right: 10px; margin-left: 10px;
+
+}
+
+
+
+
+
