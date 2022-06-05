@@ -35,6 +35,7 @@ CREATE TABLE page(
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
+
 -- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- FAKE USER DATA 
@@ -57,3 +58,13 @@ VALUES
 -- user_id for Andre: 61f32b60-1327-409d-a1d7-2b3a64c0e23a
 
 
+INSERT INTO page
+    (user_id, location, scale, description)
+VALUES
+    ('cd6d62f3-22e0-48b3-8e1d-97f523b0e271', 'brain', '10', 'Sharp pain when I woke up this morning'),
+    ('cd6d62f3-22e0-48b3-8e1d-97f523b0e271', 'stomach','5', 'probably something I ate yesterday'),
+    ('cd6d62f3-22e0-48b3-8e1d-97f523b0e271', 'stomach','10', 'yep, it was something I ate');
+
+
+
+SELECT * FROM users INNER JOIN page ON users.user_id = page.user_id;
