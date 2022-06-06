@@ -1,0 +1,73 @@
+.scrollspy-example {
+    border: orange 5px solid;
+    position: relative;
+    height: 481px;
+    width: 590px;
+    overflow: auto;
+}
+
+.pages-expanded-view{
+    margin-top: 5.2px;
+}
+
+/* Scrollspy - Card Body  */
+.card-body{
+    height: 419px;
+}
+
+/* PW: Re@per160$Linoge360# */
+
+.detail-card-layer-1{
+    /* height: 550px;
+    width: 590px; */
+    height: 450px;
+    width: 634px;
+
+    border: blue 5px solid;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 25px;
+
+}
+
+#detail-card-layer-2{
+    /* height: 450px;
+    width: 490px; */
+
+    height: 382px;
+    width: 539px;
+    border: purple 5px solid;
+    border-radius: 20px;
+
+}
+
+/* ::::::::::::::Modal Components:::::::::::::: */
+.modal-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---------Modal Scrollspy--------- */
+.scrollspy-example-2{
+    border: orange 5px solid;
+    position: relative;
+    height: auto;
+    width: 731px;
+    overflow: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* NOTE: for mobile version: 
+    flex-direction: row; <-- for horizontal scrolling
+    */
+}
+
+
+

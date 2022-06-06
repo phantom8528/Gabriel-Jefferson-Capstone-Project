@@ -13,6 +13,7 @@ const server = http.createServer(app);
 app.use(cors());
 app.use(express.json()); //<-- Allows to get requests from req.body so we can use json data
 //:::::::::::::::::::::ROUTES:::::::::::::::::::::::::::::::::::::::::::
+
 //.1 Create a todo (page)
 app.post('/todos', async (req, res) => {
     // res.send("Create a Todo (Page)");

@@ -58,6 +58,9 @@ const HomePage = ({setAuth}) => {
     return(
         <div>
             {/* <h1>This is the Home Page / Landing Page</h1> */}
+
+        {/* ::::::::::::::::::::::::::Navigation Bar:::::::::::::::::::::::::: */}
+
             <div className="homepage-container">
 
                 {/* ::::::::::::Row 1: Sign in, Banner:::::::::::: */}
@@ -92,6 +95,10 @@ const HomePage = ({setAuth}) => {
                     <div className="col-10">About Developer Col</div>
 
                 </div>
+
+                {/* ::::::::::::::::::::::::::Footer:::::::::::::::::::::::::: */}
+
+
             </div>
 
 

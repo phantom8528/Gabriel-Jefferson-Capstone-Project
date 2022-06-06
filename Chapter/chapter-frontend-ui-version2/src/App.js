@@ -20,7 +20,7 @@ function App() {
   //1. Assign authentication to the state
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  //2. Custome function to manage authorization to certain routes
+  //2. Custom function to manage authorization to certain routes
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   }
@@ -47,8 +47,6 @@ function App() {
   useEffect(() => {
     isAuth();
   });
-
-
 
 
   return (
