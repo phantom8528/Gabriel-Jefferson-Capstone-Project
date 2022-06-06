@@ -10,15 +10,18 @@ col-10
 
 /* HomePage Container */
 .homepage-container{
-    border: black 5px solid;
+    /* border: black 5px solid; */
     width: 100;
     height: fit-content;
+    background-color: #6ab4f0;
+
+
 }
 
 .row-1,
 .row-2,
 .row-3{
-    border: red 5px solid;
+    /* border: red 5px solid; */
     width: 100;
     height: fit-content;
 
@@ -34,15 +37,22 @@ col-10
 }
 
 .col-6{
-    border: green 5px solid;
+    /* border: green 5px solid; */
     height: 600px;
 }
 
+#homepage-login-col{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
 #homepage-login{
-    border: blue 5px solid;
+    /* border: blue 5px solid; */
+    background-color: #3e94db;
     border-radius: 15px;
     height: 494px;
-    width: 100;
+    width: 487px;
 
     display: flex;
     flex-direction: column;
@@ -51,13 +61,34 @@ col-10
 
 }
 
-#login-email,
-#login-password{
-    width: 641px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+#login-label{
+    font-family: 'Comfortaa';font-size: 57px;font-weight: 700;
+    color: white;
 }
 
+#login-email,
+#login-password{
+    width: 426px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    font-family: 'Comfortaa';font-size: 24px;font-weight: 30;
+    border: #3e94db 5px solid;
+
+
+}
+
+#login-button{
+    background-color: #ffe45f;
+    width: 208px;
+    font-family: 'Comfortaa';font-size: 27px;font-weight: 30;
+
+}
+
+#chapter-logo-container-1{
+    width: 200px;
+    height: 200px;
+}
 
 /* Row 2: About Product */
 
@@ -66,9 +97,27 @@ col-10
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
 }
 
-/* Row 2: About Developer */
+#about-product-col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1319px;
+
+}
+
+#product-info-box{
+    /* border: black 2px solid; */
+    border-radius: 15px;
+    height: 500px;
+    width: 1135px;
+    background-color: #3e94db;
+
+}
+
+/* Row 3: About Developer */
 
 .row-3{
     display: flex;
@@ -80,7 +129,7 @@ col-10
 
 
 .col-10{
-    border: green 5px solid;
+    /* border: green 5px solid; */
     height: 600px;
 
 }

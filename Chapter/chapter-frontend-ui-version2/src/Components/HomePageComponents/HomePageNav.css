@@ -1,0 +1,31 @@
+/*-------- Container----- */
+.homepage-nav-container{
+    width: 100;
+}
+
+.navbar{
+    height: 132px;
+    background-color: #3e94db;
+
+}
+
+/* SEE container-fluid */
+
+#homepage-nav-brand{
+    color: white;
+    margin-left: 50px;
+    font-size: 49px;
+    font-family: 'Comfortaa';font-size: 57px;font-weight: 700;
+}
+
+#homepage-nav-item-container{
+    margin-left: 850px;
+}
+
+#homepage-register-link{
+    color: white;
+    font-family: 'Comfortaa';font-size: 24px;font-weight: 30;
+    
+
+}
+
