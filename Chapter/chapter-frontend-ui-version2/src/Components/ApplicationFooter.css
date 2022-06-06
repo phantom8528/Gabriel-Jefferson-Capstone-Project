@@ -1,0 +1,66 @@
+.application-footer-container{
+    height: 200px;
+    background-color: #6ab4f0;
+
+}
+
+#application-footer-row{
+    border: white 2px solid;
+    height: 200px;
+    
+
+}
+
+#footer-links-box{
+    height: 164px;
+    width: 445px;
+    background-color: #3e94db;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 20px;
+
+    border-radius: 15px;
+
+
+}
+
+#footer-contact-box{
+    height: 164px;
+    width: 445px;
+    background-color: #3e94db;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 15px;
+
+
+}
+
+#footer-site-links-col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#img-spacer{
+    width: 35px;
+}
+
+#github-link,
+#linkedin-link{
+    width: 150px;
+    height: 150px;
+    /* border: black 2px solid; */
+    background-color: #3e94db;
+
+}
+
+#footer-space-col{
+    width: 325px;
+}
+

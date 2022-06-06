@@ -9,6 +9,8 @@ import {
   
   } from 'react-router-dom';
 import { useState } from "react";
+import ApplicationFooter from "./FooterComponent";
+import HomePageNav from "./HomePageComponents/HomePageNav";
 
 const RegisterPage = ({setAuth}) => {
 
@@ -54,8 +56,9 @@ const RegisterPage = ({setAuth}) => {
     return(
         
         <div>
-            <h1>This is the Registration Page</h1>
-            <Link to="/login">Already a Member ? Login Here </Link>
+            {/* <h1>This is the Registration Page</h1> */}
+            <HomePageNav />
+            {/* <Link to="/login">Already a Member ? Login Here </Link> */}
             <div className="register-container">
                 <div id="register-row" className="row-1">
                     <div id="register-col" className="col-10">
@@ -65,7 +68,10 @@ const RegisterPage = ({setAuth}) => {
                                 <input type="text" placeholder="Name" id="register-name" name="name" value={name} onChange={e => _onChange(e)}/>
                                 <input type="email" placeholder="Email" id="register-email" name="email" value={email} onChange={e => _onChange(e)}/>
                                 <input type="password" placeholder="Password" id="register-password" name="password" value={password} onChange={e => _onChange(e)}/>
-                                <button type="submit" className="btn btn-primary" id="register-button">Sign Up</button>
+
+                                <div className="register-button-container">
+                                    <button type="submit" className="btn btn-lg" id="register-button">Sign Up</button>
+                                </div>
                             </form>
                             {/* <Link to="/login">Already a Member ? Login Here </Link> */}
                             {/* The registration form will go here */}
@@ -76,6 +82,8 @@ const RegisterPage = ({setAuth}) => {
                     </div>
                 </div>
             </div>
+            {/* <ApplicationFooter /> */}
+
 
 
         </div>
