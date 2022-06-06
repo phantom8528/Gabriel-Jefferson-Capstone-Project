@@ -48,17 +48,17 @@ const ListTodos = () => {
                         <th scope="col">Delete Btn</th>
                     </tr>
                 </thead>
-            <tbody>
-                {/* This is where the list of todos will be generated */}
-                {todos.map(todo => (
-                    <tr>
-                        <th scope="row">{todo.todo_id}</th>
-                        <td>{todo.description}</td>
-                        <td><EditTodos todo={todo} /></td>
-                        <td>Delete Btn</td>
-                    </tr>
-                ))}
-            </tbody>
+                <tbody>
+                    {/* This is where the list of todos will be generated */}
+                    {todos.map(todo => (
+                        <tr>
+                            <th scope="row">{todo.todo_id}</th>
+                            <td>{todo.description}</td>
+                            <td><EditTodos todo={todo} /></td>
+                            <td>Delete Btn</td>
+                        </tr>
+                    ))}
+                </tbody>
             </table>
 
             {/* 

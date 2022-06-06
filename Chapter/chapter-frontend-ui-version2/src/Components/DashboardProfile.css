@@ -25,12 +25,42 @@
 }
 
 #dashboard-instructions-col{
-    border: green 5px solid;
-    /* width: 100px; */
+    /* border: green 5px solid;
     height: 240px;
-    margin-right: 10px; margin-left: 10px;
+    margin-right: 10px; margin-left: 10px; */
+
+    border: green 5px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
+
+#dashboard-input-col{
+    border: green 5px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dashboard-create-page-col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* ---------Detail Card (will be moved to List Component Later)--------- */
+#dashboard-expanded-detail-col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TRANSFER TO LIST PAGES COMPONENT */
+
+
+
 
 
 

@@ -67,4 +67,11 @@ VALUES
 
 
 
-SELECT * FROM users INNER JOIN page ON users.user_id = page.user_id;
+SELECT * FROM users INNER JOIN page ON users.user_id = page.user_id; 
+
+
+SELECT * FROM users LEFT JOIN page ON users.user_id = page.user_id WHERE users.user_id = '530c83db-96c7-4f01-9129-218d23324e08';
+
+SELECT * FROM users AS u LEFT JOIN page AS p ON u.user_id = p.user_id WHERE u.user_id = '1ba2ae04-292b-4cf7-a9a9-5f72bd86fc11';
+
+SELECT u.user_name, p.page_id, p.location, p.description, p.time_stamp FROM users AS u LEFT JOIN page AS p ON u.user_id = p.user_id WHERE u.user_id = '1ba2ae04-292b-4cf7-a9a9-5f72bd86fc11';

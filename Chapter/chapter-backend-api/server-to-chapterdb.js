@@ -191,20 +191,57 @@ router.get('/is-vertify', tokenAuth, async (req, res) => {
 //--------------Manages the user's information once logged into their dashboard---------------------
 router.get('/', tokenAuth, async (req, res) => {
     try {
+        // const {id} = req.params;
         
         //after being authorized, the user has the payload info
         // res.json(req.user); //<-- Returns the id assciated with the logged in user
         // const user = await client.query(`SELECT * FROM users WHERE user_id = '${req.user}'`); //<-- This returns all the user's information, NOT GOOD
-        const user = await client.query(`SELECT user_name FROM users WHERE user_id = '${req.user}'`); //<-- This returns all the user's information, NOT GOOD
-        res.json(user.rows[0]);
-        
+
+        // const user = await client.query(`SELECT user_name FROM users WHERE user_id = '${req.user}'`); //<-- This returns the user's name
+
+        //-------------Retrieve all the pages associated with a user's name---------------------
+        // const user = await client.query(`SELECT * FROM users INNER JOIN page ON users.user_id = page.user_id`); //<-- PROBLEM: it only returns users who have a relationship with the page table
+
+        //SOLUTION:
+        // const user = await client.query(`SELECT * FROM users LEFT JOIN page ON users.user_id = page.user_id`); //<-- PROBLEM: it returns all the users. We need a specific one
+
+        //SOLUTION:
+        // const user = await client.query(`SELECT * FROM users LEFT JOIN page ON users.user_id = page.user_id WHERE users.user_id = '${req.user.id}';`); //<-- PROBLEM: it returns all the users. We need a specific once
+        const user = await client.query(`SELECT u.user_name, p.page_id, p.location, p.scale, p.description, p.time_stamp FROM users AS u LEFT JOIN page AS p ON u.user_id = p.user_id WHERE u.user_id = $1;`, [req.user.id]);
+        // res.json(user.rows[0]);
+
+        // const userDetails = JSON.parse(user.rows);
+        res.json(user.rows);
+
     } catch (err) {
         console.log("---Marker Dashboard---");
         console.error(err.message);
-        res.status(500).send("Server Error");
+        res.status(500).send("Server Error - Dashboard Route");
+    }
+});
+
+
+//-------------Create a page associated with a user's name------------------------------
+//.1 Create a todo (page)
+router.post('/pages', tokenAuth, async (req, res) => {
+    // res.send("Create a Todo (Page)");
+
+    try {
+        //Goal: We need to get data from the client side
+
+        console.log("This is req.body: ", req.body);
+        const {location, scale, description} = req.body;
+        const newTodo = await client.query(`INSERT INTO page (user_id, location, scale, description) VALUES('${req.user.id}', '${location}', '${scale}' , '${description}') RETURNING *`); //<-- taking in user input from the client side 
+        //NOTE: "RETURNING * " means that your returning back the data your sending to the database
+        res.json(newTodo.rows);
+
+    } catch (err) {
+        console.log(err.message);
         
     }
-})
+});
+
+
 
 
 // module.exports = {

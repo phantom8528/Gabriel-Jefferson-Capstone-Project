@@ -1,0 +1,27 @@
+#write-page-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#write-page-location{
+    margin-top: 10px;
+    width: 500;
+
+}
+
+#write-page-scale{
+    margin-top: 10px;
+    width: 600;
+
+
+}
+
+#write-page-description{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 600px;
+
+
+}
