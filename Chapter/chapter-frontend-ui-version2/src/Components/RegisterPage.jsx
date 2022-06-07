@@ -68,7 +68,6 @@ const RegisterPage = ({setAuth}) => {
                                 <input type="text" placeholder="Name" id="register-name" name="name" value={name} onChange={e => _onChange(e)}/>
                                 <input type="email" placeholder="Email" id="register-email" name="email" value={email} onChange={e => _onChange(e)}/>
                                 <input type="password" placeholder="Password" id="register-password" name="password" value={password} onChange={e => _onChange(e)}/>
-
                                 <div className="register-button-container">
                                     <button type="submit" className="btn btn-lg" id="register-button">Sign Up</button>
                                 </div>

@@ -15,6 +15,7 @@
     /* border: black 5px solid; */
     width: 100;
     background-color: #6ab4f0;
+    height: 100vh;
 
 }
 
@@ -75,6 +76,14 @@
     font-family: 'Comfortaa';font-size: 27px;font-weight: 30;
 
 }
+
+#no-pages-yet{
+    font-family: 'Comfortaa';font-size: 27px;font-weight: 30;
+
+
+}
+
+
 
 
 

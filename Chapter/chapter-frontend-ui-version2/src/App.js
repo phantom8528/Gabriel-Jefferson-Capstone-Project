@@ -53,9 +53,9 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-            <Route exact path="/login" element={ !isAuthenticated ? <HomePage setAuth={setAuth} /> : <Navigate to="/dashboard" />}/>
-            <Route exact path="/register" element={ !isAuthenticated ? <RegisterPage setAuth={setAuth} /> : <Navigate to="/login" />}/>
-            <Route exact path="/dashboard" element={ isAuthenticated ? <DashboardPage setAuth={setAuth} /> : <Navigate to="/login" />}/>
+            <Route exact path="/" element={ !isAuthenticated ? <HomePage setAuth={setAuth} /> : <Navigate to="/dashboard" />}/>
+            <Route exact path="/register" element={ !isAuthenticated ? <RegisterPage setAuth={setAuth} /> : <Navigate to="/" />}/>
+            <Route exact path="/dashboard" element={ isAuthenticated ? <DashboardPage setAuth={setAuth} /> : <Navigate to="/" />}/>
         </Routes>
       </Router>
 

@@ -3,17 +3,28 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    background-color: #3e94db;
+    border-radius: 15px;
+    height: 547px;
+    width: 593px;
+
+    font-family: 'Comfortaa';font-size: 17px;font-weight: 30;
+
+
+
 }
 
 #write-page-location{
     margin-top: 10px;
-    width: 500;
+    width: 400px;
 
 }
 
 #write-page-scale{
     margin-top: 10px;
-    width: 600;
+    width: 400px;
+    margin-bottom: 10px;
 
 
 }
@@ -21,7 +32,14 @@
 #write-page-description{
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 600px;
+    width: 502px;
+    margin-bottom: 16px;
 
+}
 
+#write-button{
+    background-color: #ffe45f;
+    width: 208px;
+    font-family: 'Comfortaa';font-size: 27px;font-weight: 30;
+    color: black;
 }
