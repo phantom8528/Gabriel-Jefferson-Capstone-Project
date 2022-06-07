@@ -1,53 +1,94 @@
 /* Container Level 1 */
 .dashboard-container{
-    border: black 5px solid;
+    /* border: black 5px solid; */
     width: 100;
     height: fit-content;
+    background-color: #6ab4f0;
 }
 
-#dashboard-input-row,
+#dashboard-welcome-instructions-row,
 #dashboard-output-row{
-    border: red solid 5px;
+    /* border: red solid 5px; */
     width: 100;
-    height: 600px;
+    height: fit-content;
 
 }
+/* 
 #dashboard-welcome-row{
     border: red solid 5px;
     width: 100;
     height: 250px;
 
-}
+} */
 
-#dashboard-welcome-col{
-    width: 100;
-    height: 194px;
-}
 
+
+
+/* #dashboard-welcome-logout-box{
+
+} */
+
+#dashboard-welcome-col,
 #dashboard-instructions-col{
-    /* border: green 5px solid;
-    height: 240px;
-    margin-right: 10px; margin-left: 10px; */
-
-    border: green 5px solid;
+    /* border: green 5px solid; */
     display: flex;
     justify-content: center;
     align-items: center;
 
+    width: 100;
+    height: 521px;
 }
 
-#dashboard-input-col{
-    border: green 5px solid;
+#dashboard-welcome-logout-box{
+    background-color: #3e94db;
+    border-radius: 15px;
+    height: 416px;
+    width: 593px;
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    font-family: 'Comfortaa';font-weight: 700;
+    color: white;
+
 }
+
+#dashboard-logout-btn{
+    background-color: #ffe45f;
+    width: 208px;
+    font-family: 'Comfortaa';font-size: 27px;font-weight: 30;
+}
+
+#dashboard-instructions-box{
+    background-color: #3e94db;
+    border-radius: 15px;
+    height: 416px;
+    width: 593px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Comfortaa';font-weight: 700;
+    color: white;
+
+}
+
+
+
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::: */
 
 #dashboard-create-page-col{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+
 }
 
 /* ---------Detail Card (will be moved to List Component Later)--------- */
@@ -58,6 +99,14 @@
 }
 
 /* TRANSFER TO LIST PAGES COMPONENT */
+
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::: */
+/* MEDIA QUERY FOR MOBILE */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::: */
+
 
 
 

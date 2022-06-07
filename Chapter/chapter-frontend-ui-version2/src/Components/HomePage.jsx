@@ -62,16 +62,18 @@ const HomePage = ({setAuth}) => {
     const chapterLogoWhite = '/Users/corcoding/Desktop/projects/Gabriel-Jefferson-Capstone-Project/Chapter/chapter-frontend-ui-version2/src/Components/Assets/chapter-logo-white.png'
 
 
+    //src={require('/Users/corcoding/Desktop/projects/Gabriel-Jefferson-Capstone-Project/Chapter/chapter-frontend-ui-version2/src/Components/Assets/chapter-logo-white.png')};
+    // <img src={require('/Users/corcoding/Desktop/projects/Gabriel-Jefferson-Capstone-Project/Chapter/chapter-frontend-ui-version2/src/Components/Assets/chapter-logo-white.png').default} height={50} width={50} />
+
+
+
     return(
         <div>
             {/* <h1>This is the Home Page / Landing Page</h1> */}
 
         {/* ::::::::::::::::::::::::::Navigation Bar:::::::::::::::::::::::::: */}
         <HomePageNav />
-
         {/* ::::::::::::::::::::::::::Landing Page:::::::::::::::::::::::::: */}
-
-
             <div className="homepage-container">
 
                 {/* ::::::::::::Row 1: Sign in, Banner:::::::::::: */}
@@ -91,22 +93,26 @@ const HomePage = ({setAuth}) => {
 
                         </div>
                     </div>
-                    <div className="col-6">
-                        <img src={chapterLogoWhite} id="chapter-logo-container-1" class="rounded float-left" alt="logo"/>
+                    <div id="homepage-banner-col"  className="col-6">
+                        <div className="homepage-banner">
+                            <h2>Welcome to Chapter</h2>
+                            <h3>A digital journaling application</h3>
+                            <h3>to help you keep note of your health</h3>
+                        </div>
+                        
+
                     </div>
 
                 </div>
                 {/* :::::::::::::::::::::;;Row 2: About Product::::::::::::::::::: */}
-                <div className="row-2">
-                    <div id="about-product-col" className="col-10">
-                        <div id="product-info-box">
+                {/* <div className="row-2">
+                        <div id="about-product-col" className="col-10">
+                            <div id="product-info-box">
+
+                            </div>
 
                         </div>
-
-                    </div>
-                        
-                        
-                    </div>
+                    </div> */}
                 {/* :::::::::::::Row 3: About Developer::::::::::::::::::::::::::: */}
                 {/* <div className="row-3">
                     <div className="col-10">About Developer Col

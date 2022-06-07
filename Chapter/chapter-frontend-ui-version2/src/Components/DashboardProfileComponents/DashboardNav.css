@@ -1,0 +1,22 @@
+.user-dashboard-nav-container{
+    width: 100;
+    height: 134px;
+
+    /* border: purple 2px solid; */
+}
+.navbar{
+    height: 134px;
+    background-color: #3e94db;
+}
+
+#dashboard-nav-brand{
+    color: white;
+    margin-left: 50px;
+    font-size: 49px;
+    font-family: 'Comfortaa';font-size: 57px;font-weight: 700;
+
+}
+
+#dashboard-nav-item-container{
+    margin-left: 850px;
+}

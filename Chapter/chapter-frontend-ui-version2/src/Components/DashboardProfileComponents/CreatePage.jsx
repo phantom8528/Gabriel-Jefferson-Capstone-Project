@@ -52,13 +52,15 @@ const CreatePage = () => {
     }
     return(
         <div>
-            <h1 className="text-center mt-5">Write a Page</h1>
                 <form onSubmit={_onSubmit} id="write-page-form">
-                    <input type="text" id="write-page-location" value={location} onChange={e => setLocation(e.target.value)} placeholder="Location"/> 
-                    <input type="text" id="write-page-scale"  value={scale} onChange={e => setScale(e.target.value)} placeholder="On a Scale from 1 to 10"/> 
+
+                    <h1 className="text-center mt-5">Write a Page</h1>
+                    <input type="text" id="write-page-location" value={location} onChange={e => setLocation(e.target.value)} placeholder="Location On Body"/> 
+                    <input type="text" id="write-page-scale"  value={scale} onChange={e => setScale(e.target.value)} placeholder="On a Scale from 1 to 9" maxLength={1} /> 
                     {/* <input type="text" value={description} onChange={e => setDescription(e.target.value)} placeholder="Explain ..."/>  */}
-                    <textarea class="form-control" id="write-page-description" maxLength={254} rows="10" value={description} onChange={e => setDescription(e.target.value)} placeholder="Explain ..."></textarea>
-                    <button className="btn btn-success">Add</button>
+                    <textarea class="form-control" id="write-page-description" maxLength={255} rows="10" value={description} onChange={e => setDescription(e.target.value)} placeholder="Explain ... (255 characters or less please)"></textarea>
+                    <button id="write-button"  className="btn btn-success">Add</button>
+
                 </form>
         </div>
     )

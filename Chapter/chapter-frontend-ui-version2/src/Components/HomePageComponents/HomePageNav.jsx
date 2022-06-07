@@ -17,7 +17,7 @@ const HomePageNav = () => {
             {/* <h1>Home Page Navigation Bar Placeholder</h1> */}
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <a id="homepage-nav-brand"  class="navbar-brand" href="/login">Chapter</a>
+                    <a id="homepage-nav-brand"  class="navbar-brand" href="/">Chapter</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
@@ -25,7 +25,7 @@ const HomePageNav = () => {
                     <ul id="homepage-nav-item-container"  class="navbar-nav">
                         <li class="nav-item-1">
                         <a id="homepage-register-link" class="nav-link " aria-current="page" href="/register">
-                            | Register 
+                            Register
                             </a>
                         </li>
                     </ul>
